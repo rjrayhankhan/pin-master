@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input id="OTPCode" class="form-control" type="text">
+                    <button id="pinBtn" class="generate-btn">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input onclick="removeAll()" id="inputOTP" class="form-control" type="text">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div id="btn7" class="button">7</div>
+                              <div id="btn8" class="button">8</div>
+                              <div id="btn9" class="button">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="btn4" class="button">4</div>
+                              <div id="btn5" class="button">5</div>
+                              <div id="btn6" class="button">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div id="btn1" class="button">1</div>
+                              <div id="btn2" class="button">2</div>
+                              <div id="btn3" class="button">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div id="btnBack" class="button"><</div>
+                                <div id="btn0" class="button">0</div>
+                                <div id="btnC" class="button">C</div>
+                            </div>
+                            <div>
+                                <button id="submitBtn" type="submit" class="submit-btn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section">
+            <p id="false" class="notify">❌ Pin Didn't Match, Please try again</p>
+            <p id="true" class="notify">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+
+    <script>
+        function hidden(id){
+            document.getElementById(id).style.display = "none"
+        }
+            hidden("false");
+            hidden("true");
+            
+              const defineRightNumber = document.getElementById("submitBtn");
+              const submitBtn = defineRightNumber.addEventListener("click", function(){
+
+              const valueCheck = document.getElementById("inputOTP").value;
+              const valueCheck1 = document.getElementById("OTPCode").value;
+            
+               if(valueCheck == valueCheck1){
+ 
+                       document.getElementById("true").style.display = "block";
+               }
+               
+               else {
+                       document.getElementById("false").style.display = "block";
+                       document.getElementById("true").style.display = "none";
+               }
+       })
+
+              const pinButton = document.getElementById("pinBtn");
+              pinButton.addEventListener("click", function(){
+              const OTPPinNumber = document.getElementById("OTPCode").value;
+                     
+                var num = 1111
+                    for(var i = 0; i < 6; i++){
+                        var randomNum = Math.random() * (9999 - 1000 + 1)+ 1000;
+                        var output = Math.round(randomNum);
+                    }
+                    const newValue = output;
+                    const setValue = document.getElementById("OTPCode").value = output;
+              })
+
+              function handelNumber(id){
+                        const getValue = document.getElementById(id).innerText;
+                        const newValue = document.getElementById("inputOTP");
+                        const setValue = newValue.value = newValue.value + getValue;
+                  }
+                
+                  
+                  const calculatorBtn = document.getElementById("btn7");
+                  calculatorBtn.addEventListener("click", function(){
+                    handelNumber("btn7");
+                  })
+                  const calculatorBtn2 = document.getElementById("btn8");
+                  calculatorBtn2.addEventListener("click", function(){
+                    handelNumber("btn8");
+                  })
+                  const calculatorBtn3 = document.getElementById("btn9");
+                  calculatorBtn3.addEventListener("click", function(){
+                    handelNumber("btn9");
+                  })
+                  const calculatorBtn4 = document.getElementById("btn4");
+                  calculatorBtn4.addEventListener("click", function(){
+                    handelNumber("btn4");
+                  })
+                  const calculatorBtn5 = document.getElementById("btn5");
+                  calculatorBtn5.addEventListener("click", function(){
+                    handelNumber("btn5");
+                  })
+                  const calculatorBtn6 = document.getElementById("btn6");
+                  calculatorBtn6.addEventListener("click", function(){
+                    handelNumber("btn6");
+                  })
+                  const calculatorBtn7 = document.getElementById("btn1");
+                  calculatorBtn7.addEventListener("click", function(){
+                    handelNumber("btn1");
+                  })
+                  const calculatorBtn8 = document.getElementById("btn2");
+                  calculatorBtn8.addEventListener("click", function(){
+                    handelNumber("btn2");
+                  })
+                  const calculatorBtn9 = document.getElementById("btn3");
+                  calculatorBtn9.addEventListener("click", function(){
+                    handelNumber("btn3");
+                  })
+                  const calculatorBtn11 = document.getElementById("btn0");
+                  calculatorBtn11.addEventListener("click", function(){
+                    handelNumber("btn0");
+                  })
+                  
+                  //clear input number
+                  const clearInputNumber = document.getElementById("btnC").addEventListener("click", function(){
+                               const clearValue = document.getElementById("inputOTP").value = "";
+                                
+                  })
+                 const backSpace = document.getElementById("btnBack").addEventListener("click", function(){
+                         const backValue = document.getElementById("inputOTP").value;  
+                         const backValue2 = backValue.substr(0, backValue.length-1); 
+                         document.getElementById("inputOTP").value = backValue2;
+                 })
+                  
+
+    </script>
+</body>
+</html>
